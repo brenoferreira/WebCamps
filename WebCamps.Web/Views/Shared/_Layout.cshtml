@@ -25,24 +25,14 @@
                 </div>
             </nav>
         </header>
-        <div id="body">
+        <div class="container">
             @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
+            <section>
                 @RenderBody()
             </section>
         </div>
         <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
-                <div class="float-right">
-                    <ul id="social">
-                        <li><a href="http://facebook.com" class="facebook">Facebook</a></li>
-                        <li><a href="http://twitter.com" class="twitter">Twitter</a></li>
-                    </ul>
-                </div>
-            </div>
+            <p>@DateTime.Now.Year - WebCamps RJ. Organizado por <a href="http://twitter.com/breno_ferreira">@@breno_ferreira</a> e <a href="http://twitter.com/rodrigovidal">@@rodrigovidal</a></p>
         </footer>
     </body>
 </html>
