@@ -2,32 +2,28 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - WebCamps RJ</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
         <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
-        <link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
         <script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
         <meta name="viewport" content="width=device-width" />
     </head>
     <body>
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here.", "Index", "Home")</p>
+            <nav class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="/">WebCamps RJ</a>
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                <li><a href="/Inscricao">Inscricao</a></li>
+                                <li><a href="/Agenda">Agenda</a></li>
+                                <li><a href="/Palestrantes">Palestrantes</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            </nav>
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
