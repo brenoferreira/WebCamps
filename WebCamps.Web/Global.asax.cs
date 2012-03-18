@@ -49,7 +49,16 @@ namespace WebCamps.Web
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            BundleTable.Bundles.EnableDefaultBundles();//.RegisterTemplateBundles();
+            BundleTable.Bundles.EnableDefaultBundles();
+
+            var scriptsOrder = new BundleFileSetOrdering("backbone");
+            scriptsOrder.Files.Add("jquery-1.7.1.min.js");
+            scriptsOrder.Files.Add("underscore.min.js");
+            scriptsOrder.Files.Add("backbone.min.js");
+            scriptsOrder.Files.Add("WebCamps.js");
+            scriptsOrder.Files.Add("bootstrap.min.js");
+
+            BundleTable.Bundles.FileSetOrderList.Add(scriptsOrder);
         }
     }
 }
