@@ -18,13 +18,13 @@ namespace WebCamps.Web.Data
                 { 
                     Name = "Breno Ferreira", 
                     Resume = "Dev lead at Microsoft Innovation Center", 
-                    Twitter = "@breno_ferreira" 
+                    Twitter = "breno_ferreira" 
                 },
                 new Speaker() 
                 { 
                     Name = "Rodrigo Vidal", 
                     Resume = "Consultor independente", 
-                    Twitter = "@rodrigovidal" 
+                    Twitter = "rodrigovidal" 
                 }
             };
         }
@@ -42,7 +42,7 @@ namespace WebCamps.Web.Data
                 { 
                     Title = "Novidades do ASP.NET MVC 4", 
                     Description = "Novidades presentes na nova versão do ASP.NET MVC.", 
-                    Speaker = this.speakers.Single(speaker => speaker.Twitter == "@breno_ferreira"),
+                    Speaker = this.speakers.Single(speaker => speaker.Twitter == "breno_ferreira"),
                     StartTime = "10:00",
                     EndTime = "11:00"
                 },
@@ -50,7 +50,7 @@ namespace WebCamps.Web.Data
                 { 
                     Title = "Client-Side MVC com Backbone.JS", 
                     Description = "Estruture melhor sua aplicação web com Backbone.JS.", 
-                    Speaker = this.speakers.Single(speaker => speaker.Twitter == "@rodrigovidal"),
+                    Speaker = this.speakers.Single(speaker => speaker.Twitter == "rodrigovidal"),
                     StartTime = "11:00",
                     EndTime = "12:00"
                 },

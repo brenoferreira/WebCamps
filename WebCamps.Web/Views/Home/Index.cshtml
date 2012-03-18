@@ -18,3 +18,30 @@
     </div>
 </div>
 </script>
+
+<script type="text/template" id="talk-template">
+<div>
+    <h1><%= talk.get('Title') %></h1>
+
+    <p><%= talk.get('Description') %></p>
+
+    <div>
+        Palestrante: <span><%= talk.get('Speaker').Name %></span> | 
+        Horário: <span><%= talk.get('StartTime') %></span> até <span><%= talk.get('EndTime') %></span>
+    </div>
+
+    <hr />
+</div>
+</script>
+
+<script type="text/template" id="speaker-template">
+<div>
+    <h1><%= speaker.get('Name') %></h1>
+
+    <p><%= speaker.get('Resume') %></p>
+
+    <span>Twitter: <a href="http://twitter.com/<%= speaker.get('Twitter') %>">@@<%= speaker.get('Twitter') %></span>
+
+    <hr />
+</div>
+</script>

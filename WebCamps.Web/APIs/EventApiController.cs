@@ -12,6 +12,29 @@ namespace WebCamps.Web.APIs.Controllers
     {
         private EventRepository repository = new EventRepository();
 
+        /// <summary>
+        /// Useless class necessary because DataContractJsonSerializer cannot serialize anonymous types.
+        /// </summary>
+        public class ApiInfo
+        {
+            public ApiInfo()
+            {
+                Speakers = "/api/event/speakers";
+                Talks = "/api/event/talks";
+            }
+
+            public String Speakers { get; set; }
+
+            public String Talks { get; set; }
+        }
+
+        public ApiInfo Index()
+        {
+            var data = new ApiInfo();
+
+            return data;
+        }
+
         public IQueryable<Speaker> Speakers()
         {
             return this.repository.Speakers().AsQueryable();

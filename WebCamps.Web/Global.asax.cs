@@ -29,7 +29,7 @@ namespace WebCamps.Web
             routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/event/{action}",
-                defaults: new { controller = "EventApi" }
+                defaults: new { controller = "EventApi", action = "Index" }
             );
 
             routes.MapRoute(

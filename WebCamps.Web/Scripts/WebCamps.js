@@ -24,6 +24,16 @@ Event = Backbone.Model.extend({
     }
 });
 
+Talks = Backbone.Collection.extend({
+    model: Talk,
+    url: '/api/event/talks'
+});
+
+Speakers = Backbone.Collection.extend({
+    model: Speaker,
+    url: '/api/event/speakers'
+});
+
 EventView = Backbone.View.extend({
     initialize: function () {
         this.render();
@@ -37,6 +47,46 @@ EventView = Backbone.View.extend({
     }
 });
 
+TalksView = Backbone.View.extend({
+    initialize: function () {
+        $(this.el).empty();
+
+        var talks = new Talks();
+        var self = this;
+        talks.fetch({success: function(){
+            talks.each(function (talk) {
+                self.render(talk);
+            });
+        }});
+    },
+
+    render: function (talk) {
+        var template = _.template($('#talk-template').html(), { talk: talk });
+        $(this.el).append(template);
+    }
+});
+
+SpeakersView = Backbone.View.extend({
+    initialize: function () {
+        $(this.el).empty();
+
+        var speakers = new Speakers();
+        var self = this;
+        speakers.fetch({
+            success: function () {
+                speakers.each(function (speaker) {
+                    self.render(speaker);
+                });
+            }
+        });
+    },
+
+    render: function (speaker) {
+        var template = _.template($('#speaker-template').html(), { speaker: speaker });
+        $(this.el).append(template);
+    }
+});
+
 AppRouter = Backbone.Router.extend({
     routes: {
         '/Agenda': 'Agenda',
@@ -46,11 +96,11 @@ AppRouter = Backbone.Router.extend({
     },
 
     Agenda: function () {
-        alert('agenda');
+        var talksView = new TalksView({ el: $('#content') });
     },
 
     Palestrantes: function() {
-        alert('palestrantes');
+        var speakersView = new SpeakersView({ el: $('#content') });
     },
 
     Inscricao: function() {
@@ -63,8 +113,6 @@ AppRouter = Backbone.Router.extend({
 });
 
 $(function () {
-    //var eventView = new EventView({ el: $('#content') });
-
     var appRouter = new AppRouter();
     Backbone.history.start();
 });
