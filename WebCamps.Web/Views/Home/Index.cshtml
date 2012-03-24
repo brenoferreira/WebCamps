@@ -11,7 +11,7 @@
     
     <%= event.get('Description') %>
 
-    <a class="btn btn-primary btn-large" href="<%= event.get('RegistrationLink') %>">Inscreva-se</a>
+    <p>Data: <%= event.get('Date') %> <a class="btn btn-primary btn-large" href="<%= event.get('RegistrationLink') %>">Inscreva-se</a></p>
 
     <div class="social-btns">
         @Html.Partial("SocialButtons")
@@ -43,5 +43,13 @@
     <span>Twitter: <a href="http://twitter.com/<%= speaker.get('Twitter') %>">@@<%= speaker.get('Twitter') %></span>
 
     <hr />
+</div>
+</script>
+
+<script type="text/template" id="registration-template">
+<div class="hero-unit">
+    <h1>Em breve!</h1>
+
+    <p>As inscrições estarão abertas em breve! Fique ligado, assim que abrirmos as inscrições iremos avisar no <a href="http://twitter.com/#!/webcampsrj">Twitter</a></p>
 </div>
 </script>

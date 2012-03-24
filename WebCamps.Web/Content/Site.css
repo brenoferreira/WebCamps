@@ -9,3 +9,8 @@ footer {
 .social-btns {
     margin-top: 5px;
 }
+
+.event-date {
+    color: #fff;
+    font-size: 20px;
+}

@@ -20,7 +20,8 @@ Event = Backbone.Model.extend({
     defaults: {
         Title: 'WebCamps Rio de Janeiro!',
         Description: '<p>O WebCamps é um evento presencial destinado as pessoas que desejam começar a desenvolver aplicações Web. Não importa se voce não sabe nada sobre desenvolvimento Web, ou se voce já é um programador experiente. Durante o WebCamps - Rio de Janeiro, voce irá conhecer as mais novas tecnologias e ferramentas de desenvolvimento Web fornecidas pela Microsoft.</p><p>Todo o conteúdo apresentado durante o evento é <strong>gratuito</strong>.</p>',
-        RegistrationLink: '#/Inscricao'
+        RegistrationLink: '#/Inscricao',
+        Date: '25/05/2012'
     }
 });
 
@@ -43,6 +44,17 @@ EventView = Backbone.View.extend({
         var event = new Event();
 
         var template = _.template($('#event-template').html(), { event: event });
+        $(this.el).html(template);
+    }
+});
+
+RegistrationView = Backbone.View.extend({
+    initialize: function () {
+        this.render();
+    },
+
+    render: function () {
+        var template = _.template($('#registration-template').html(), {});
         $(this.el).html(template);
     }
 });
@@ -104,7 +116,7 @@ AppRouter = Backbone.Router.extend({
     },
 
     Inscricao: function() {
-        alert('inscricao');
+        var registrationView = new RegistrationView({ el: $('#content') });
     },
 
     Home: function() {
