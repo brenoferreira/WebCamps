@@ -62,14 +62,17 @@ RegistrationView = Backbone.View.extend({
 TalksView = Backbone.View.extend({
     initialize: function () {
         $(this.el).empty();
-
+        ShowLoadingIndicator(this.el);
         var talks = new Talks();
         var self = this;
-        talks.fetch({success: function(){
-            talks.each(function (talk) {
-                self.render(talk);
-            });
-        }});
+        talks.fetch({
+            success: function () {
+                HideLoadingIndicator(self.el);
+                talks.each(function (talk) {
+                    self.render(talk);
+                });
+            }
+        });
     },
 
     render: function (talk) {
@@ -81,11 +84,13 @@ TalksView = Backbone.View.extend({
 SpeakersView = Backbone.View.extend({
     initialize: function () {
         $(this.el).empty();
+        ShowLoadingIndicator(this.el);
 
         var speakers = new Speakers();
         var self = this;
         speakers.fetch({
             success: function () {
+                HideLoadingIndicator(self.el);
                 speakers.each(function (speaker) {
                     self.render(speaker);
                 });
@@ -98,6 +103,24 @@ SpeakersView = Backbone.View.extend({
         $(this.el).append(template);
     }
 });
+
+function ShowLoadingIndicator(element) {
+    $(element).activity({
+        segments: 12,
+        align: 'left',
+        valign: 'top',
+        steps: 3,
+        width: 2,
+        space: 1,
+        length: 3,
+        color: '#030303',
+        speed: 1.5
+    });
+}
+
+function HideLoadingIndicator(element) {
+    $(element).activity(false);
+}
 
 AppRouter = Backbone.Router.extend({
     routes: {
